@@ -26,7 +26,7 @@ export function AboutSection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 })
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-background to-accent/20">
+    <section id="about" className="py-20 bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}

@@ -11,9 +11,9 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-600/5" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-primary/5" />
       
       {/* Animated background elements */}
       <div className="absolute inset-0">

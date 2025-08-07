@@ -52,7 +52,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-background to-accent/20">
+    <section id="contact" className="py-20 bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}

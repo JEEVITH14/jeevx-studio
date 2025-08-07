@@ -38,7 +38,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-gradient-to-t from-accent/20 to-background border-t border-border">
+    <footer className="bg-gradient-to-t from-secondary/20 to-background border-t border-border">
       <div className="container mx-auto px-6 py-16">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
