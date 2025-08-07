@@ -1,24 +1,15 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import { Heart, Zap, Target } from "lucide-react"
 
-const values = [
-  {
-    icon: Heart,
-    title: "Passion-Driven",
-    description: "We pour our heart into every project, treating your vision as our own."
-  },
-  {
-    icon: Zap,
-    title: "Innovation First",
-    description: "Cutting-edge solutions that push boundaries and exceed expectations."
-  },
-  {
-    icon: Target,
-    title: "Results Focused",
-    description: "Every design decision is made with your goals and success in mind."
-  }
+// Client logos - using placeholder images for now
+const clients = [
+  { name: "Client 1", logo: "https://via.placeholder.com/120x60/8639FF/FFFFFF?text=CLIENT" },
+  { name: "Client 2", logo: "https://via.placeholder.com/120x60/8639FF/FFFFFF?text=BRAND" },
+  { name: "Client 3", logo: "https://via.placeholder.com/120x60/8639FF/FFFFFF?text=COMPANY" },
+  { name: "Client 4", logo: "https://via.placeholder.com/120x60/8639FF/FFFFFF?text=STUDIO" },
+  { name: "Client 5", logo: "https://via.placeholder.com/120x60/8639FF/FFFFFF?text=AGENCY" },
+  { name: "Client 6", logo: "https://via.placeholder.com/120x60/8639FF/FFFFFF?text=CORP" },
 ]
 
 export function AboutSection() {
@@ -26,44 +17,60 @@ export function AboutSection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 })
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-background to-secondary/20">
+    <section id="about" className="py-20 bg-background">
       <div className="container mx-auto px-6">
+        {/* Client Logos Carousel */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="mb-20"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            About <span className="gradient-text">Jeevx Studio</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            We're a creative studio that believes in the power of exceptional design to transform businesses. 
-            Founded on the principle that every brand has a unique story worth telling, we combine artistic 
-            vision with strategic thinking to create digital experiences that resonate and inspire.
-          </p>
+          <div className="relative overflow-hidden">
+            <div className="flex animate-scroll space-x-12">
+              {/* First set */}
+              {clients.map((client, index) => (
+                <div key={index} className="flex-shrink-0">
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="h-12 opacity-60 hover:opacity-100 transition-opacity duration-300 filter grayscale hover:grayscale-0"
+                  />
+                </div>
+              ))}
+              {/* Duplicate for seamless loop */}
+              {clients.map((client, index) => (
+                <div key={`duplicate-${index}`} className="flex-shrink-0">
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="h-12 opacity-60 hover:opacity-100 transition-opacity duration-300 filter grayscale hover:grayscale-0"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-16 items-center mb-20">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="text-2xl md:text-3xl font-semibold mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
               Our Story
-            </h3>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              Born from a shared passion for design and technology, Jeevx Studio emerged as a response 
-              to the growing need for authentic, impactful digital experiences. We've worked with startups 
-              to established brands, helping them tell their stories through compelling visuals and 
-              seamless user experiences.
+            </h2>
+            <p className="text-muted-foreground mb-6 leading-relaxed text-lg">
+              Founded on the principle that exceptional design can transform businesses, 
+              Jeevx Studio combines artistic vision with strategic thinking to create 
+              digital experiences that resonate and inspire.
             </p>
-            <p className="text-muted-foreground leading-relaxed">
-              What sets us apart is our collaborative approach. We don't just create for you – we create 
-              with you, ensuring every project reflects your unique vision while leveraging our expertise 
-              in design, development, and strategy.
+            <p className="text-muted-foreground leading-relaxed text-lg">
+              We've partnered with startups to established brands, helping them tell 
+              their stories through compelling visuals and seamless user experiences 
+              that drive real results.
             </p>
           </motion.div>
 
@@ -73,35 +80,30 @@ export function AboutSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative"
           >
-            <div className="bg-gradient-to-br from-primary/10 to-purple-600/10 rounded-2xl p-8 shadow-elegant">
-              <div className="text-4xl font-bold gradient-text mb-2">500+</div>
-              <div className="text-muted-foreground mb-4">Projects Completed</div>
-              
-              <div className="text-4xl font-bold gradient-text mb-2">50+</div>
-              <div className="text-muted-foreground mb-4">Happy Clients</div>
-              
-              <div className="text-4xl font-bold gradient-text mb-2">5+</div>
-              <div className="text-muted-foreground">Years of Experience</div>
+            <div className="bg-gradient-to-br from-primary/10 to-purple-600/10 rounded-2xl p-8 border border-primary/20">
+              <div className="grid grid-cols-2 gap-8">
+                <div>
+                  <div className="text-4xl font-bold text-primary mb-2">150+</div>
+                  <div className="text-muted-foreground">Projects Completed</div>
+                </div>
+                
+                <div>
+                  <div className="text-4xl font-bold text-primary mb-2">50+</div>
+                  <div className="text-muted-foreground">Happy Clients</div>
+                </div>
+                
+                <div>
+                  <div className="text-4xl font-bold text-primary mb-2">5+</div>
+                  <div className="text-muted-foreground">Years Experience</div>
+                </div>
+                
+                <div>
+                  <div className="text-4xl font-bold text-primary mb-2">24/7</div>
+                  <div className="text-muted-foreground">Support</div>
+                </div>
+              </div>
             </div>
           </motion.div>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {values.map((value, index) => (
-            <motion.div
-              key={value.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-              className="text-center p-6 rounded-xl bg-card border border-border hover:shadow-elegant transition-all duration-300"
-            >
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                <value.icon className="w-6 h-6 text-primary" />
-              </div>
-              <h4 className="text-xl font-semibold mb-3">{value.title}</h4>
-              <p className="text-muted-foreground leading-relaxed">{value.description}</p>
-            </motion.div>
-          ))}
         </div>
       </div>
     </section>
