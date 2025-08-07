@@ -3,11 +3,11 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 
 const navigation = [
+  { name: "About", href: "#about" },
   { name: "Services", href: "#services" },
-  { name: "Recent Work", href: "#portfolio" },
+  { name: "Work", href: "#portfolio" },
   { name: "Process", href: "#process" },
-  { name: "Our Story", href: "#about" },
-  { name: "Careers", href: "#contact" },
+  { name: "Contact", href: "#contact" },
 ]
 
 export function Navbar() {
@@ -34,19 +34,19 @@ export function Navbar() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/90 backdrop-blur-md border-b border-border/20"
+          ? "bg-background/80 backdrop-blur-md border-b border-border shadow-elegant"
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 py-6">
+      <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-2xl font-bold text-white"
+            className="text-2xl font-bold gradient-text"
           >
-            JEEVX STUDIO
+            Jeevx Studio
           </motion.div>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -57,7 +57,7 @@ export function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index }}
                 onClick={() => scrollToSection(item.href)}
-                className="text-white/80 hover:text-white transition-colors duration-200 text-sm"
+                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 {item.name}
               </motion.button>
@@ -67,10 +67,9 @@ export function Navbar() {
           <div className="flex items-center">
             <Button
               onClick={() => scrollToSection("#contact")}
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 hover:border-white/50"
+              className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-primary-foreground"
             >
-              Get In Touch
+              Let's Connect
             </Button>
           </div>
         </div>
