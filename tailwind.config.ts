@@ -19,8 +19,7 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
+        sans: ['Poppins', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

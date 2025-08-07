@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { ThemeToggle } from "@/components/ThemeToggle"
 import { Button } from "@/components/ui/button"
 
 const navigation = [
@@ -65,8 +64,7 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="flex items-center space-x-4">
-            <ThemeToggle />
+          <div className="flex items-center">
             <Button
               onClick={() => scrollToSection("#contact")}
               className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-primary-foreground"
