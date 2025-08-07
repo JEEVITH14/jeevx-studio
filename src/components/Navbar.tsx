@@ -12,6 +12,7 @@ const navigation = [
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState("")
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,23 +29,68 @@ export function Navbar() {
     }
   }
 
+  // Animation variants
+  const navVariants = {
+    hidden: { y: -100, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 20,
+        duration: 0.8
+      }
+    }
+  }
+
+  const logoVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 200,
+        damping: 20,
+        delay: 0.2
+      }
+    }
+  }
+
+  const buttonVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 150,
+        damping: 20,
+        delay: 0.8
+      }
+    }
+  }
+
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      variants={navVariants}
+      initial="hidden"
+      animate="visible"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border shadow-elegant"
+          ? "bg-background/90 backdrop-blur-lg border-b border-border/50 shadow-elegant"
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-2xl font-bold gradient-text"
+            variants={logoVariants}
+            initial="hidden"
+            animate="visible"
+            whileHover={{ scale: 1.05 }}
+            className="text-2xl font-bold gradient-text cursor-pointer"
           >
             Jeevx Studio
           </motion.div>
@@ -55,23 +101,47 @@ export function Navbar() {
                 key={item.name}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * index }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 15,
+                  delay: 0.1 * index + 0.3
+                }}
+                whileHover={{ 
+                  scale: 1.1,
+                  color: "hsl(var(--primary))",
+                  transition: { duration: 0.2 }
+                }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection(item.href)}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="relative text-muted-foreground hover:text-primary transition-all duration-300 group"
               >
                 {item.name}
+                <motion.div
+                  className="absolute -bottom-1 left-0 h-0.5 bg-primary"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                />
               </motion.button>
             ))}
           </div>
 
-          <div className="flex items-center">
+          <motion.div 
+            variants={buttonVariants}
+            initial="hidden"
+            animate="visible"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center"
+          >
             <Button
               onClick={() => scrollToSection("#contact")}
-              className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-primary-foreground"
+              className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-primary-foreground transition-all duration-300 hover:shadow-glow"
             >
               Let's Connect
             </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
     </motion.nav>
