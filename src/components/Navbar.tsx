@@ -92,7 +92,7 @@ export function Navbar() {
             whileHover={{ scale: 1.05 }}
             className="text-2xl font-bold gradient-text cursor-pointer"
           >
-            Jeevx Studio
+            JeevX Studio
           </motion.div>
 
           <div className="hidden md:flex items-center space-x-8">

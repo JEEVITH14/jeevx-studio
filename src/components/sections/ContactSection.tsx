@@ -7,6 +7,8 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
 import { Mail, MapPin, Phone, Send } from "lucide-react"
+import emailjs from '@emailjs/browser'
+import { EMAILJS_CONFIG, type EmailTemplateParams } from '@/lib/emailjs-config'
 
 const contactInfo = [
   {
@@ -38,17 +40,79 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you within 24 hours.",
-    })
-    
-    setIsSubmitting(false)
-    e.currentTarget.reset()
+
+    const formData = new FormData(e.currentTarget)
+    const templateParams: EmailTemplateParams = {
+      from_name: `${formData.get('firstName')} ${formData.get('lastName')}`,
+      from_email: formData.get('email') as string,
+      company: formData.get('company') as string || 'Not specified',
+      message: formData.get('message') as string,
+      to_name: 'JeevX Studio Team'
+    }
+
+    try {
+      // Debug: Log the configuration and template params
+      console.log('EmailJS Config:', {
+        SERVICE_ID: EMAILJS_CONFIG.SERVICE_ID,
+        TEMPLATE_ID: EMAILJS_CONFIG.TEMPLATE_ID,
+        PUBLIC_KEY: EMAILJS_CONFIG.PUBLIC_KEY ? '***configured***' : 'missing'
+      })
+      console.log('Template Params:', templateParams)
+
+      // Validate configuration
+      if (!EMAILJS_CONFIG.SERVICE_ID || !EMAILJS_CONFIG.TEMPLATE_ID || !EMAILJS_CONFIG.PUBLIC_KEY) {
+        throw new Error('EmailJS configuration is incomplete')
+      }
+
+      console.log('About to send email...')
+      
+      const result = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        EMAILJS_CONFIG.PUBLIC_KEY,
+        templateParams,
+      )
+
+      console.log('EmailJS Result - Full Object:', result)
+      console.log('EmailJS Result - Status:', result.status)
+      console.log('EmailJS Result - Text:', result.text)
+      console.log('EmailJS Result - Type of status:', typeof result.status)
+
+      // Success - no toast message needed
+      console.log('Email sent successfully, no confirmation message shown')
+      
+      console.log('Resetting form...')
+      e.currentTarget.reset()
+      
+      console.log('Email sending completed successfully!')
+      
+    } catch (error) {
+      console.error('EmailJS Error Details:', error)
+      console.error('Error type:', typeof error)
+      console.error('Error message:', error instanceof Error ? error.message : 'Unknown error')
+      
+      let errorMessage = "Please try again or contact us directly."
+      
+      // Provide more specific error messages
+      if (error instanceof Error) {
+        console.log('Processing error message:', error.message)
+        if (error.message.includes('configuration is incomplete')) {
+          errorMessage = "Email service is not properly configured."
+        } else if (error.message.includes('Service not found')) {
+          errorMessage = "Email service ID is invalid. Please check configuration."
+        } else if (error.message.includes('Template not found')) {
+          errorMessage = "Email template ID is invalid. Please check configuration."
+        } else if (error.message.includes('Invalid public key')) {
+          errorMessage = "Email public key is invalid. Please check configuration."
+        }
+      }
+
+      // Error logged to console only, no user notification
+      console.log('Email sending failed, but no error message shown to user')
+    } finally {
+      console.log('Setting isSubmitting to false')
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -159,21 +223,7 @@ export function ContactSection() {
                 />
               </div>
 
-              <div>
-                <Label htmlFor="budget">Project Budget</Label>
-                <select 
-                  id="budget" 
-                  name="budget" 
-                  required
-                  className="mt-2 w-full px-3 py-2 bg-background border border-input rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-                >
-                  <option value="">Select budget range</option>
-                  <option value="5k-10k">$5,000 - $10,000</option>
-                  <option value="10k-25k">$10,000 - $25,000</option>
-                  <option value="25k-50k">$25,000 - $50,000</option>
-                  <option value="50k+">$50,000+</option>
-                </select>
-              </div>
+
 
               <div>
                 <Label htmlFor="message">Message</Label>

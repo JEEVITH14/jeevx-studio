@@ -49,7 +49,7 @@ export function Footer() {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <h3 className="text-2xl font-bold gradient-text mb-4">Jeevx Studio</h3>
+              <h3 className="text-2xl font-bold gradient-text mb-4">JeevX Studio</h3>
               <p className="text-muted-foreground leading-relaxed max-w-md">
                 We're a creative studio that believes in the power of exceptional design 
                 to transform businesses and create meaningful connections.
@@ -108,10 +108,10 @@ export function Footer() {
           className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center"
         >
           <p className="text-muted-foreground text-sm flex items-center">
-            Made with <Heart className="w-4 h-4 text-red-500 mx-1" fill="currentColor" /> by Jeevx Studio
+            Made with <Heart className="w-4 h-4 text-red-500 mx-1" fill="currentColor" /> by JeevX Studio
           </p>
           <p className="text-muted-foreground text-sm mt-4 md:mt-0">
-            © 2024 Jeevx Studio. All rights reserved.
+            © 2024 JeevX Studio. All rights reserved.
           </p>
         </motion.div>
       </div>

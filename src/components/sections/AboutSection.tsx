@@ -36,7 +36,7 @@ export function AboutSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            About <span className="gradient-text">Jeevx Studio</span>
+            About <span className="gradient-text">JeevX Studio</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             We're a creative studio that believes in the power of exceptional design to transform businesses. 
@@ -55,7 +55,7 @@ export function AboutSection() {
               Our Story
             </h3>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Born from a shared passion for design and technology, Jeevx Studio emerged as a response 
+              Born from a shared passion for design and technology, JeevX Studio emerged as a response 
               to the growing need for authentic, impactful digital experiences. We've worked with startups 
               to established brands, helping them tell their stories through compelling visuals and 
               seamless user experiences.
