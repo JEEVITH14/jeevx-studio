@@ -53,7 +53,7 @@ export function HeroSection() {
           transition={{ duration: 0.8 }}
           className="mb-8"
         >
-                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-8">
+                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-12">
              <Sparkles className="w-4 h-4" />
              <span className="text-sm font-medium">Creative Studio</span>
            </div>
