@@ -10,31 +10,31 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 12 6% 6%;
-    --foreground: 267 30% 92%;
+         --foreground: 25 30% 92%;
     --card: 20 6% 8%;
-    --card-foreground: 267 30% 92%;
+         --card-foreground: 25 30% 92%;
     --popover: 20 6% 8%;
-    --popover-foreground: 267 30% 92%;
-    --primary: 267 84% 61%;
+         --popover-foreground: 25 30% 92%;
+         --primary: 25 95% 53%;
     --primary-foreground: 0 0% 100%;
     --secondary: 250 15% 11%;
-    --secondary-foreground: 267 30% 92%;
+         --secondary-foreground: 25 30% 92%;
     --muted: 250 15% 11%;
     --muted-foreground: 250 10% 60%;
     --accent: 250 15% 11%;
-    --accent-foreground: 267 30% 92%;
+         --accent-foreground: 25 30% 92%;
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
     --border: 250 15% 15%;
     --input: 250 15% 15%;
-    --ring: 267 84% 61%;
+         --ring: 25 95% 53%;
     --radius: 0.75rem;
     
-    /* Purple dark theme design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(267, 84%, 61%) 0%, hsl(285, 84%, 67%) 100%);
+    /* Orange dark theme design tokens */
+         --gradient-primary: linear-gradient(135deg, hsl(25, 95%, 53%) 0%, hsl(35, 95%, 53%) 100%);
     --gradient-secondary: linear-gradient(135deg, hsl(250, 15%, 11%) 0%, hsl(12, 6%, 6%) 100%);
     --shadow-elegant: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
-    --shadow-glow: 0 0 40px hsl(267, 84%, 61%, 0.4);
+         --shadow-glow: 0 0 40px hsl(25, 95%, 53%, 0.4);
   }
 
 }

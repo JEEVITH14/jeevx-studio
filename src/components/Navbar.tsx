@@ -109,7 +109,7 @@ export function Navbar() {
                 }}
                 whileHover={{ 
                   scale: 1.05,
-                  color: "hsl(267, 84%, 61%)",
+                  color: "hsl(25, 95%, 53%)",
                   transition: { duration: 0.15 }
                 }}
                 whileTap={{ scale: 0.95 }}
@@ -137,7 +137,7 @@ export function Navbar() {
           >
             <Button
               onClick={() => scrollToSection("#contact")}
-              className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-primary-foreground transition-all duration-300 hover:shadow-glow"
+              className="bg-gradient-to-r from-primary to-orange-600 hover:from-primary/90 hover:to-orange-600/90 text-primary-foreground transition-all duration-300 hover:shadow-glow"
             >
               Let's Connect
             </Button>

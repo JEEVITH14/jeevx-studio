@@ -1,6 +1,5 @@
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
-import { useRef } from "react"
+import { motion, useInView, animate } from "framer-motion"
+import { useRef, useEffect, useState } from "react"
 import { Heart, Zap, Target } from "lucide-react"
 
 const values = [
@@ -20,6 +19,29 @@ const values = [
     description: "Every design decision is made with your goals and success in mind."
   }
 ]
+
+// Animated Counter component (final, linter-safe)
+function Counter({ from = 0, to, duration = 1.5, suffix = "" }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+  const [current, setCurrent] = useState(from)
+
+  useEffect(() => {
+    let controls: any
+    if (isInView) {
+      controls = animate(from, to, {
+        duration,
+        ease: "easeOut",
+        onUpdate: (latest) => setCurrent(Math.round(latest)),
+      })
+    }
+    return () => controls && controls.stop && controls.stop()
+  }, [isInView, from, to, duration])
+
+  return (
+    <span ref={ref}>{current.toLocaleString()}{suffix}</span>
+  )
+}
 
 export function AboutSection() {
   const ref = useRef(null)
@@ -73,14 +95,20 @@ export function AboutSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative"
           >
-            <div className="bg-gradient-to-br from-primary/10 to-purple-600/10 rounded-2xl p-8 shadow-elegant">
-              <div className="text-4xl font-bold gradient-text mb-2">500+</div>
+            <div className="bg-gradient-to-br from-primary/10 to-orange-600/10 rounded-2xl p-8 shadow-elegant">
+              <div className="text-4xl font-bold gradient-text mb-2">
+                <Counter from={0} to={500} duration={1.5} suffix="+" />
+              </div>
               <div className="text-muted-foreground mb-4">Projects Completed</div>
               
-              <div className="text-4xl font-bold gradient-text mb-2">50+</div>
+              <div className="text-4xl font-bold gradient-text mb-2">
+                <Counter from={0} to={50} duration={1.5} suffix="+" />
+              </div>
               <div className="text-muted-foreground mb-4">Happy Clients</div>
               
-              <div className="text-4xl font-bold gradient-text mb-2">5+</div>
+              <div className="text-4xl font-bold gradient-text mb-2">
+                <Counter from={0} to={5} duration={1.5} suffix="+" />
+              </div>
               <div className="text-muted-foreground">Years of Experience</div>
             </div>
           </motion.div>

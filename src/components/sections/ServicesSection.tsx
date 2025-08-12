@@ -17,12 +17,6 @@ const services = [
     features: ["Logo Design", "Brand Guidelines", "Color Palettes", "Typography"]
   },
   {
-    icon: Play,
-    title: "Motion Graphics",
-    description: "Engaging animations and motion graphics that bring your content to life and captivate viewers.",
-    features: ["2D Animation", "Video Editing", "Visual Effects", "Interactive Media"]
-  },
-  {
     icon: Sparkles,
     title: "Graphic Design",
     description: "Eye-catching visual designs for print and digital media that communicate your message effectively.",
@@ -53,7 +47,7 @@ export function ServicesSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -63,7 +57,7 @@ export function ServicesSection() {
               className="group p-6 rounded-2xl bg-card border border-border hover:shadow-glow hover:border-primary/20 transition-all duration-500"
             >
               <div className="relative mb-6">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-primary/10 to-purple-600/10 group-hover:from-primary/20 group-hover:to-purple-600/20 transition-all duration-300">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-primary/10 to-orange-600/10 group-hover:from-primary/20 group-hover:to-orange-600/20 transition-all duration-300">
                   <service.icon className="w-7 h-7 text-primary group-hover:scale-110 transition-transform duration-300" />
                 </div>
               </div>

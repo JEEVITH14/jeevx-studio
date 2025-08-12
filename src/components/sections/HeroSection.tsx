@@ -15,6 +15,15 @@ export function HeroSection() {
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-primary/5" />
       
+      {/* Logo watermark */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-5">
+        <img 
+          src="/logo.png" 
+          alt="JeevX Studio" 
+          className="w-96 h-auto"
+        />
+      </div>
+      
       {/* Animated background elements */}
       <div className="absolute inset-0">
         {[...Array(6)].map((_, i) => (
@@ -42,12 +51,12 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-6"
+          className="mb-8"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-8">
-            <Sparkles className="w-4 h-4" />
-            <span className="text-sm font-medium">Creative Studio</span>
-          </div>
+                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-8">
+             <Sparkles className="w-4 h-4" />
+             <span className="text-sm font-medium">Creative Studio</span>
+           </div>
         </motion.div>
 
         <motion.h1
@@ -80,7 +89,7 @@ export function HeroSection() {
           <Button
             size="lg"
             onClick={() => scrollToSection("#portfolio")}
-            className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-primary-foreground px-8 py-4 text-lg group"
+            className="bg-gradient-to-r from-primary to-orange-600 hover:from-primary/90 hover:to-orange-600/90 text-primary-foreground px-8 py-4 text-lg group"
           >
             View Our Work
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -106,8 +115,6 @@ export function HeroSection() {
             <span>Web Development</span>
             <span>•</span>
             <span>Branding</span>
-            <span>•</span>
-            <span>Motion Graphics</span>
             <span>•</span>
             <span>Design</span>
           </div>

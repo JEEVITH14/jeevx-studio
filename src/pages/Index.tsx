@@ -8,6 +8,7 @@ import { TestimonialsSection } from "@/components/sections/TestimonialsSection"
 import { ContactSection } from "@/components/sections/ContactSection"
 import { Footer } from "@/components/Footer"
 
+
 const Index = () => {
   return (
     <div className="min-h-screen">

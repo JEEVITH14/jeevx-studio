@@ -72,7 +72,7 @@ export function ProcessSection() {
               >
                 {/* Step number and icon */}
                 <div className="relative mx-auto mb-6">
-                  <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary/10 to-purple-600/10 rounded-full flex items-center justify-center group-hover:from-primary/20 group-hover:to-purple-600/20 transition-all duration-300 border border-border group-hover:border-primary/30">
+                  <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary/10 to-orange-600/10 rounded-full flex items-center justify-center group-hover:from-primary/20 group-hover:to-orange-600/20 transition-all duration-300 border border-border group-hover:border-primary/30">
                     <step.icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform duration-300" />
                   </div>
                   <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">

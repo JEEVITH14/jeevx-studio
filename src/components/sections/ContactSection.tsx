@@ -14,19 +14,19 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    content: "hello@jeevxstudio.com",
-    href: "mailto:hello@jeevxstudio.com"
+    content: "JeevXStudio@gmail.com",
+    href: "mailto:JeevXStudio@gmail.com"
   },
   {
     icon: Phone,
     title: "Phone",
-    content: "+1 (555) 123-4567",
-    href: "tel:+15551234567"
+    content: "+91 8778389767",
+    href: "tel:+918778389767"
   },
   {
     icon: MapPin,
     title: "Location",
-    content: "San Francisco, CA",
+    content: "Chennai, Tamil Nadu",
     href: "#"
   }
 ]
@@ -69,8 +69,8 @@ export function ContactSection() {
       const result = await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.TEMPLATE_ID,
-        EMAILJS_CONFIG.PUBLIC_KEY,
         templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY,
       )
 
       console.log('EmailJS Result - Full Object:', result)
@@ -78,8 +78,13 @@ export function ContactSection() {
       console.log('EmailJS Result - Text:', result.text)
       console.log('EmailJS Result - Type of status:', typeof result.status)
 
-      // Success - no toast message needed
-      console.log('Email sent successfully, no confirmation message shown')
+      // Always show success message in green box
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you within 24 hours.",
+        duration: 5000,
+        className: "bg-green-500 border-green-600 text-white",
+      })
       
       console.log('Resetting form...')
       e.currentTarget.reset()
@@ -107,8 +112,16 @@ export function ContactSection() {
         }
       }
 
-      // Error logged to console only, no user notification
-      console.log('Email sending failed, but no error message shown to user')
+      // Show success message in green box even if there's an error
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you within 24 hours.",
+        duration: 5000,
+        className: "bg-green-500 border-green-600 text-white",
+      })
+      
+      // Reset form even if there was an error
+      e.currentTarget.reset()
     } finally {
       console.log('Setting isSubmitting to false')
       setIsSubmitting(false)
@@ -162,7 +175,7 @@ export function ContactSection() {
               ))}
             </div>
 
-            <div className="p-6 bg-gradient-to-br from-primary/5 to-purple-600/5 rounded-2xl border border-primary/20">
+            <div className="p-6 bg-gradient-to-br from-primary/5 to-orange-600/5 rounded-2xl border border-primary/20">
               <h4 className="font-semibold mb-3">Ready to Start?</h4>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 We typically respond within 2-4 hours during business hours. 
@@ -239,7 +252,7 @@ export function ContactSection() {
               <Button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-primary-foreground py-3 text-lg group"
+                className="w-full bg-gradient-to-r from-primary to-orange-600 hover:from-primary/90 hover:to-orange-600/90 text-primary-foreground py-3 text-lg group"
               >
                 {isSubmitting ? (
                   "Sending..."

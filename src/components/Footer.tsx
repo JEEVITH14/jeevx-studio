@@ -1,11 +1,12 @@
 import { motion } from "framer-motion"
-import { Heart, Twitter, Instagram, Linkedin, Dribbble } from "lucide-react"
+import { Heart, Instagram, Linkedin, Dribbble } from "lucide-react"
+import { FiverrIcon } from "@/components/ui/fiverr-icon"
 
 const socialLinks = [
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Instagram, href: "https://www.instagram.com/jeevx.studio/", label: "Instagram" },
   { icon: Linkedin, href: "#", label: "LinkedIn" },
   { icon: Dribbble, href: "#", label: "Dribbble" },
+  { icon: FiverrIcon, href: "https://www.fiverr.com/s/zW1lXyb", label: "Fiverr" },
 ]
 
 const footerLinks = [
@@ -14,7 +15,6 @@ const footerLinks = [
     links: [
       { name: "Web Development", href: "#services" },
       { name: "Branding", href: "#services" },
-      { name: "Motion Graphics", href: "#services" },
       { name: "Graphic Design", href: "#services" },
     ]
   },
