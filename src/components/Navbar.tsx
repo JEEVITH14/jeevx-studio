@@ -133,7 +133,7 @@ export function Navbar() {
             animate="visible"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center"
+            className="flex items-center mr-4"
           >
             <Button
               onClick={() => scrollToSection("#contact")}
